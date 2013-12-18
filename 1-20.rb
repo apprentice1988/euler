@@ -47,16 +47,97 @@
 #****************************************************************************************
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#The prime factors of 13195 are 5, 7, 13 and 29.
+# 3. The prime factors of 13195 are 5, 7, 13 and 29.
 #
 #What is the largest prime factor of the number 600851475143 ?
+##
+#def largest_prime_factor_of(num)
+	#require 'prime'
+	#Prime.each(num) do |p|
+		#break if p >= num 
+		#num /= p while num%p==0
+	#end
+	#num
+#end
+#p largest_prime_factor_of(600851475143)
 
-def largest_prime_factor_of(num)
-	require 'prime'
-	Prime.each(num) do |p|
-		break if p >= num 
-		num /= p while num%p==0
-	end
-	num
-end
-p largest_prime_factor_of(600851475143)
+
+
+
+
+
+#****************************************************************************************
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+# 4. A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+#Find the largest palindrome made from the product of two 3-digit numbers.
+
+#method 1
+#class Array
+	#def product
+		#self.inject(1){|pro,i|pro*i}
+	#end
+#end
+#
+#
+#def prime_factors_list num 
+	#require "prime"
+	#list = []
+	#Prime.each(num) do |p|
+		#break if p >= num 
+		#while num%p == 0
+			#list << p 
+			#num /= p 
+		#end
+	#end
+	#list << num
+#end
+#
+#def array_seperate_by_two_factors_with_some_digits?(arr,num)
+	#range = (10**(num-1)..(10**num-1))
+	#1.upto(arr.length).each do |n|
+		#arr.combination(n).to_a.each do |a|
+			#b = arr.dup
+			#a.each do |u|
+			 #z = b.index(u)
+			 #b.delete_at(z)
+			#end
+			#return true if range.include?(a.product) && range.include?(b.product)
+		#end
+	#end
+	#false
+#end
+#
+#
+#def largest_palindrome_with_two
+	#num = 0 
+	#9.downto(1).each do |a|
+		#9.downto(0).each do |b|
+			#9.downto(0).each do |c|
+				#num = a*100000 + b*10000 + c*1000+c*100+b*10+a 
+				#list = prime_factors_list(num) 
+				#return num if array_seperate_by_two_factors_with_some_digits?(list,3)
+			#end
+		#end
+	#end
+#end
+#p largest_palindrome_with_two
+
+###############
+#method 2
+
+#def isPalindrom(n)
+	#n.to_s == n.to_s.reverse
+#end
+#
+#def product(minB,maxB)
+	#products = []
+	#(minB..maxB).to_a.each do |i|
+		#(minB..maxB).to_a.each do |j|
+			#products << i*j
+		#end
+	#end
+	#products.uniq.keep_if{|x|isPalindrom(x)}.max 
+#end
+#p product(100,999)
